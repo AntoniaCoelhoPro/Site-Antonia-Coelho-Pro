@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
+import logoAsset from '../assets/logo-antonia.svg'; // <-- 1. IMPORTAMOS A LOGO AQUI
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +16,6 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    if (location.pathname !== '/') {
-      window.location.href = `/#${id}`;
-      return;
-    }
-
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -29,11 +24,6 @@ const Header = () => {
   };
 
   const scrollToForm = () => {
-    if (location.pathname !== '/') {
-      window.location.href = '/#hero';
-      return;
-    }
-
     const element = document.getElementById('hero');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -51,13 +41,13 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img
-              src="/src/assets/logo-antonia.svg"
+              src={logoAsset} // <-- 2. USAMOS A LOGO IMPORTADA AQUI
               alt="Logo Antonia Coelho"
               className="h-12 w-auto"
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* O resto do seu código continua igual... */}
           <nav className="hidden lg:flex items-center space-x-8">
             {['Serviços', 'Protocolo', 'Sobre', 'Cases', 'FAQ'].map((item) => (
               <button
@@ -76,7 +66,6 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="tel:+5592991460804"
@@ -92,7 +81,6 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
@@ -101,7 +89,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* ...resto do componente... */}
         {isMenuOpen && (
           <div className="lg:hidden bg-white border-t border-gray-200 py-4">
             <nav className="flex flex-col space-y-4">
