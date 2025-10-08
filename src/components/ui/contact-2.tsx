@@ -85,23 +85,23 @@ export const Contact2 = ({
       // Criar FormData
       const formData = new FormData();
       formData.append('entry.1714807403', data.name); // Nome
-      formData.append('entry.182561658', data.email); // Email
-      formData.append('entry.1190233945', data.whatsapp); // WhatsApp
-      formData.append('entry.1093122736', data.niche); // Nicho
+      formData.append('entry.182651658', data.email); // Email
+      formData.append('entry.1003122736', data.whatsapp); // WhatsApp
+      formData.append('entry.1190233945', data.niche); // Nicho
       formData.append('entry.2088552847', data.message); // Mensagem
       formData.append('entry.1863634779', 'Formulário Principal'); // Origem
       formData.append('entry.609614134', utmData.utm_source || 'direct'); // UTM Source
-      formData.append('entry.1697531618', utmData.utm_medium || 'none'); // UTM Medium
+      formData.append('entry.1697318618', utmData.utm_medium || 'none'); // UTM Medium
       formData.append('entry.1102663734', utmData.utm_campaign || ''); // UTM Campaign
-      formData.append('entry.1889020776', utmData.utm_term || ''); // UTM Term
-      formData.append('entry.1849113644', utmData.utm_content || ''); // UTM Content
-      formData.append('entry.838153434', utmData.gclid || ''); // GCLID
+      formData.append('entry.1889002776', utmData.utm_term || ''); // UTM Term
+      formData.append('entry.1649751135', utmData.utm_content || ''); // UTM Content
+      formData.append('entry.838135434', utmData.gclid || ''); // GCLID
       formData.append('entry.540138108', utmData.fbclid || ''); // FBCLID
-      formData.append('entry.1449117657', utmData.ref || ''); // Referrer
-      formData.append('entry.1474593484', utmData.landing_page || window.location.href); // Landing Page
+      formData.append('entry.1441917657', utmData.ref || ''); // Referrer
+      formData.append('entry.1474553484', utmData.landing_page || window.location.href); // Landing Page
       formData.append('entry.266399907', utmData.timestamp || new Date().toISOString()); // Timestamp
       formData.append('entry.608855165', utmData.user_agent || navigator.userAgent); // User Agent
-      formData.append('entry.2072259232', ''); // IP Address (vazio)
+      formData.append('entry.2072225932', ''); // IP Address (vazio)
       formData.append('entry.1419377696', getDeviceInfo(utmData.user_agent || navigator.userAgent)); // Device Info
       
       // 🔍 DEBUG: Ver todos os dados do FormData
