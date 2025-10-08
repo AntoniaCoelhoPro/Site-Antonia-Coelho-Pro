@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Modal } from "./modal";
 import { Button } from "./button";
 import { Input } from "./input";
-import { Label } from "./label";
 import { useUTMTracking } from "../../hooks/useUTMTracking";
 
 interface ContactPopupProps {
@@ -75,20 +74,20 @@ export const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
       const formData = new FormData();
       formData.append('entry.1714807403', data.name); // Nome
       formData.append('entry.182561658', data.email); // Email
-      formData.append('entry.1093122736', data.whatsapp); // WhatsApp
-      formData.append('entry.1190233945', ''); // Nicho (vazio no popup)
+      formData.append('entry.1190233945', data.whatsapp); // WhatsApp
+      formData.append('entry.1093122736', ''); // Nicho (vazio no popup)
       formData.append('entry.2088552847', 'Consultoria Gratuita via Popup'); // Mensagem
       formData.append('entry.1863634779', 'Popup'); // Origem
       formData.append('entry.609614134', utmData.utm_source || 'direct'); // UTM Source
       formData.append('entry.1697531618', utmData.utm_medium || 'none'); // UTM Medium
-      formData.append('entry.1102667374', utmData.utm_campaign || ''); // UTM Campaign
+      formData.append('entry.1102663734', utmData.utm_campaign || ''); // UTM Campaign
       formData.append('entry.1889020776', utmData.utm_term || ''); // UTM Term
       formData.append('entry.1849113644', utmData.utm_content || ''); // UTM Content
       formData.append('entry.838153434', utmData.gclid || ''); // GCLID
       formData.append('entry.540138108', utmData.fbclid || ''); // FBCLID
       formData.append('entry.1449117657', utmData.ref || ''); // Referrer
-      formData.append('entry.1474593474', utmData.landing_page || window.location.href); // Landing Page
-      formData.append('entry.266399070', utmData.timestamp || new Date().toISOString()); // Timestamp
+      formData.append('entry.1474593484', utmData.landing_page || window.location.href); // Landing Page
+      formData.append('entry.266399907', utmData.timestamp || new Date().toISOString()); // Timestamp
       formData.append('entry.608855165', utmData.user_agent || navigator.userAgent); // User Agent
       formData.append('entry.2072259232', ''); // IP Address (vazio)
       formData.append('entry.1419377696', getDeviceInfo(utmData.user_agent || navigator.userAgent)); // Device Info
@@ -190,7 +189,7 @@ Aguardo retorno para agendarmos nossa conversa!`;
 
         <div className="space-y-4">
           <div>
-            <Label htmlFor="name">Nome Completo *</Label>
+            <span className="text-sm font-medium">Nome Completo *</span>
             <Input
               type="text"
               id="name"
@@ -203,7 +202,7 @@ Aguardo retorno para agendarmos nossa conversa!`;
           </div>
 
           <div>
-            <Label htmlFor="email">Email *</Label>
+            <span className="text-sm font-medium">Email *</span>
             <Input
               type="email"
               id="email"
@@ -216,7 +215,7 @@ Aguardo retorno para agendarmos nossa conversa!`;
           </div>
 
           <div>
-            <Label htmlFor="whatsapp">WhatsApp (com DDD) *</Label>
+            <span className="text-sm font-medium">WhatsApp (com DDD) *</span>
             <Input
               type="tel"
               id="whatsapp"
