@@ -64,6 +64,13 @@ export const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
         return `${deviceType} - ${browser} - ${os}`;
       };
       
+      // 🔍 DEBUG: Ver o que está sendo enviado
+      console.log('🚀 Enviando para Google Forms:');
+      console.log('Nome:', data.name);
+      console.log('Email:', data.email);
+      console.log('WhatsApp:', data.whatsapp);
+      console.log('UTM Data:', utmData);
+      
       // Criar FormData
       const formData = new FormData();
       formData.append('entry.1714807403', data.name); // Nome
@@ -86,6 +93,12 @@ export const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
       formData.append('entry.2072259232', ''); // IP Address (vazio)
       formData.append('entry.1419377696', getDeviceInfo(utmData.user_agent || navigator.userAgent)); // Device Info
       
+      // 🔍 DEBUG: Ver todos os dados do FormData
+      console.log('📋 FormData completo:');
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
+      
       // Enviar para Google Forms
       await fetch(FORM_URL, {
         method: 'POST',
@@ -105,6 +118,10 @@ export const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
     setIsSubmitting(true);
     
     try {
+      // 🔍 DEBUG: Ver o que está sendo enviado
+      console.log('📝 Dados do formulário:', formData);
+      console.log('📍 UTM Data:', getFormattedUTMs());
+      
       // Enviar dados para Google Forms
       await sendToGoogleForms(formData);
       
