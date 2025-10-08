@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useUTMTracking } from "../../hooks/useUTMTracking";
 
@@ -87,20 +86,20 @@ export const Contact2 = ({
       const formData = new FormData();
       formData.append('entry.1714807403', data.name); // Nome
       formData.append('entry.182561658', data.email); // Email
-      formData.append('entry.1093122736', data.whatsapp); // WhatsApp
-      formData.append('entry.1190233945', data.niche); // Nicho
+      formData.append('entry.1190233945', data.whatsapp); // WhatsApp
+      formData.append('entry.1093122736', data.niche); // Nicho
       formData.append('entry.2088552847', data.message); // Mensagem
       formData.append('entry.1863634779', 'Formulário Principal'); // Origem
       formData.append('entry.609614134', utmData.utm_source || 'direct'); // UTM Source
       formData.append('entry.1697531618', utmData.utm_medium || 'none'); // UTM Medium
-      formData.append('entry.1102667374', utmData.utm_campaign || ''); // UTM Campaign
+      formData.append('entry.1102663734', utmData.utm_campaign || ''); // UTM Campaign
       formData.append('entry.1889020776', utmData.utm_term || ''); // UTM Term
       formData.append('entry.1849113644', utmData.utm_content || ''); // UTM Content
       formData.append('entry.838153434', utmData.gclid || ''); // GCLID
       formData.append('entry.540138108', utmData.fbclid || ''); // FBCLID
       formData.append('entry.1449117657', utmData.ref || ''); // Referrer
-      formData.append('entry.1474593474', utmData.landing_page || window.location.href); // Landing Page
-      formData.append('entry.266399070', utmData.timestamp || new Date().toISOString()); // Timestamp
+      formData.append('entry.1474593484', utmData.landing_page || window.location.href); // Landing Page
+      formData.append('entry.266399907', utmData.timestamp || new Date().toISOString()); // Timestamp
       formData.append('entry.608855165', utmData.user_agent || navigator.userAgent); // User Agent
       formData.append('entry.2072259232', ''); // IP Address (vazio)
       formData.append('entry.1419377696', getDeviceInfo(utmData.user_agent || navigator.userAgent)); // Device Info
@@ -222,9 +221,7 @@ Aguardo retorno!`;
           </div>
           <form onSubmit={handleSubmit} className="mx-auto flex max-w-screen-md flex-col gap-6 rounded-lg border bg-white p-10 shadow-lg">
             <div className="grid w-full items-center gap-1.5">
-              <Label htmlFor="name">
-                Nome Completo
-              </Label>
+              <span className="text-sm font-medium">Nome Completo</span>
               <Input 
                 type="text" 
                 id="name" 
@@ -237,9 +234,7 @@ Aguardo retorno!`;
             </div>
             <div className="flex gap-4">
               <div className="grid w-full items-center gap-1.5">
-                <Label htmlFor="email">
-                  Email
-                </Label>
+                <span className="text-sm font-medium">Email</span>
                 <Input 
                   type="email" 
                   id="email" 
@@ -251,9 +246,7 @@ Aguardo retorno!`;
                 />
               </div>
               <div className="grid w-full items-center gap-1.5">
-                <Label htmlFor="whatsapp">
-                  WhatsApp (com DDD)
-                </Label>
+                <span className="text-sm font-medium">WhatsApp (com DDD)</span>
                 <Input 
                   type="tel" 
                   id="whatsapp" 
@@ -266,9 +259,7 @@ Aguardo retorno!`;
               </div>
             </div>
             <div className="grid w-full items-center gap-1.5">
-              <Label htmlFor="niche">
-                Qual o seu nicho?
-              </Label>
+              <span className="text-sm font-medium">Qual o seu nicho?</span>
               <Input 
                 type="text" 
                 id="niche" 
@@ -280,9 +271,7 @@ Aguardo retorno!`;
               />
             </div>
             <div className="grid w-full gap-1.5">
-              <Label htmlFor="message">
-                Mensagem
-              </Label>
+              <span className="text-sm font-medium">Mensagem</span>
               <Textarea 
                 placeholder="Descreva sua necessidade ou dúvida..." 
                 id="message" 
