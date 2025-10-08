@@ -27,48 +27,75 @@ export const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
     }));
   };
 
-  // Função para enviar dados para Google Sheets
-  const sendToGoogleSheets = async (data: any) => {
+  // Função para enviar dados para Google Forms
+  const sendToGoogleForms = async (data: any) => {
     try {
-      // URL do Google Apps Script
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwO2GUA2Wu1LR045Zu0cfKMKWDA5IqTOK5EaqEWYPMsZhVdNHKb5M_UP4blbSjBVPWS/exec';
+      // URL do Google Forms
+      const FORM_ID = '1FAIpQLSc20WRTxxBCn0pGGMbwJI65QPf5ZB_wYluon364XqCbgjqhDg';
+      const FORM_URL = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
       
       // Obter dados de UTM
       const utmData = getFormattedUTMs();
       
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      // Função para extrair informações do dispositivo
+      const getDeviceInfo = (userAgent: string) => {
+        if (!userAgent) return 'Unknown';
+        
+        const isMobile = /Mobile|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+        const isTablet = /iPad|Android(?=.*Tablet)|Windows Phone/i.test(userAgent);
+        
+        let deviceType = 'Desktop';
+        if (isTablet) deviceType = 'Tablet';
+        else if (isMobile) deviceType = 'Mobile';
+        
+        let browser = 'Unknown';
+        if (userAgent.includes('Chrome')) browser = 'Chrome';
+        else if (userAgent.includes('Firefox')) browser = 'Firefox';
+        else if (userAgent.includes('Safari')) browser = 'Safari';
+        else if (userAgent.includes('Edge')) browser = 'Edge';
+        
+        let os = 'Unknown';
+        if (userAgent.includes('Windows')) os = 'Windows';
+        else if (userAgent.includes('Mac')) os = 'macOS';
+        else if (userAgent.includes('Linux')) os = 'Linux';
+        else if (userAgent.includes('Android')) os = 'Android';
+        else if (userAgent.includes('iOS')) os = 'iOS';
+        
+        return `${deviceType} - ${browser} - ${os}`;
+      };
+      
+      // Criar FormData
+      const formData = new FormData();
+      formData.append('entry.1714807403', data.name); // Nome
+      formData.append('entry.182561658', data.email); // Email
+      formData.append('entry.1093122736', data.whatsapp); // WhatsApp
+      formData.append('entry.1190233945', ''); // Nicho (vazio no popup)
+      formData.append('entry.2088552847', 'Consultoria Gratuita via Popup'); // Mensagem
+      formData.append('entry.1863634779', 'Popup'); // Origem
+      formData.append('entry.609614134', utmData.utm_source || 'direct'); // UTM Source
+      formData.append('entry.1697531618', utmData.utm_medium || 'none'); // UTM Medium
+      formData.append('entry.1102667374', utmData.utm_campaign || ''); // UTM Campaign
+      formData.append('entry.1889020776', utmData.utm_term || ''); // UTM Term
+      formData.append('entry.1849113644', utmData.utm_content || ''); // UTM Content
+      formData.append('entry.838153434', utmData.gclid || ''); // GCLID
+      formData.append('entry.540138108', utmData.fbclid || ''); // FBCLID
+      formData.append('entry.1449117657', utmData.ref || ''); // Referrer
+      formData.append('entry.1474593474', utmData.landing_page || window.location.href); // Landing Page
+      formData.append('entry.266399070', utmData.timestamp || new Date().toISOString()); // Timestamp
+      formData.append('entry.608855165', utmData.user_agent || navigator.userAgent); // User Agent
+      formData.append('entry.2072259232', ''); // IP Address (vazio)
+      formData.append('entry.1419377696', getDeviceInfo(utmData.user_agent || navigator.userAgent)); // Device Info
+      
+      // Enviar para Google Forms
+      await fetch(FORM_URL, {
         method: 'POST',
-        mode: 'cors', // CORS configurado no Google Apps Script
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          // Dados do formulário
-          nome: data.name,
-          email: data.email,
-          whatsapp: data.whatsapp,
-          nicho: '',
-          mensagem: 'Consultoria Gratuita via Popup',
-          origem: 'Popup',
-          
-          // Dados de UTM
-          utm_source: utmData.utm_source || 'direct',
-          utm_medium: utmData.utm_medium || 'none',
-          utm_campaign: utmData.utm_campaign || '',
-          utm_term: utmData.utm_term || '',
-          utm_content: utmData.utm_content || '',
-          gclid: utmData.gclid || '',
-          fbclid: utmData.fbclid || '',
-          ref: utmData.ref || '',
-          landing_page: utmData.landing_page || window.location.href,
-          timestamp: utmData.timestamp || new Date().toISOString(),
-          user_agent: utmData.user_agent || navigator.userAgent,
-        })
+        mode: 'no-cors', // Funciona perfeitamente com Google Forms!
+        body: formData
       });
       
       return true;
     } catch (error) {
-      console.error('Erro ao enviar para Google Sheets:', error);
+      console.error('Erro ao enviar para Google Forms:', error);
       return false;
     }
   };
@@ -78,8 +105,8 @@ export const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
     setIsSubmitting(true);
     
     try {
-      // Enviar dados para Google Sheets
-      await sendToGoogleSheets(formData);
+      // Enviar dados para Google Forms
+      await sendToGoogleForms(formData);
       
       // Criar mensagem personalizada para WhatsApp
       const message = `Olá! Gostaria de agendar uma consultoria gratuita.
