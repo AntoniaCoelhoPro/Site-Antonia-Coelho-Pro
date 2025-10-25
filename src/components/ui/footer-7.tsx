@@ -146,7 +146,7 @@ export const Footer7 = ({
         </div>
         
         {/* Copyright and CNPJ */}
-        <div className="text-left space-y-1 -mt-6">
+        <div className="text-right space-y-1 -mt-6">
           <p className="text-gray-300 text-xs">
             CNPJ: 49.517.447/0001-21
           </p>
