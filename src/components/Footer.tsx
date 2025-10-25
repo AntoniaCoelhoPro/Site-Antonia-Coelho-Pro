@@ -38,17 +38,16 @@ const Footer = () => {
               links: [
                 { name: "WhatsApp", href: "https://wa.me/5592991460804" },
                 { name: "Email", href: "mailto:contato@antoniacoelhopro.com.br" },
-                { name: "LinkedIn", href: "https://linkedin.com/in/antonia-coelho" },
-                { name: "Instagram", href: "https://instagram.com/antonia.coelho.pro" },
+                { name: "LinkedIn", href: "https://www.linkedin.com/in/antoniacoelhopro" },
+                { name: "Instagram", href: "https://www.instagram.com/antoniacoelhopro" },
               ],
             },
           ]}
           description="Especialista em tráfego pago com +4 anos de experiência. Transformo tráfego em resultados reais para empresas de todos os segmentos."
           socialLinks={[
-            { icon: <FaInstagram className="size-5" />, href: "https://instagram.com/antonia.coelho.pro", label: "Instagram" },
-            { icon: <FaFacebook className="size-5" />, href: "https://facebook.com/antonia.coelho.pro", label: "Facebook" },
-            { icon: <FaTwitter className="size-5" />, href: "https://twitter.com/antonia_coelho", label: "Twitter" },
-            { icon: <FaLinkedin className="size-5" />, href: "https://linkedin.com/in/antonia-coelho", label: "LinkedIn" },
+            { icon: <FaInstagram className="size-5" />, href: "https://www.instagram.com/antoniacoelhopro/", label: "Instagram" },
+            { icon: <FaFacebook className="size-5" />, href: "https://web.facebook.com/antoniacoelhopro", label: "Facebook" },
+            { icon: <FaLinkedin className="size-5" />, href: "https://www.linkedin.com/in/antoniacoelhopro/", label: "LinkedIn" },
           ]}
           copyright={`© ${currentYear} Antonia Coelho PRO. Todos os direitos reservados.`}
           legalLinks={[
