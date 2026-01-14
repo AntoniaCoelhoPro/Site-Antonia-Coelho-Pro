@@ -12,7 +12,7 @@ const FAQ = () => {
   const faqItems = [
     {
       question: 'Quanto custa para começar com tráfego pago?',
-      answer: 'Meus serviços começam a partir de R$ 1.500/mês para gestão de campanhas + investimento em mídia (mínimo R$ 1.000/mês). Para empresas maiores, ofereço pacotes de R$ 2.500/mês com investimento de R$ 3.000/mês em mídia. Sem taxa de setup.',
+      answer: 'Cada proposta é construída sob medida, garantindo que a estratégia esteja alinhada de acordo com os objetivos do negócio. A gestão inclui o planejamento estratégico, criação, acompanhamento e otimização contínua das campanhas, além da definição do investimento em mídia mais adequado para alcançar os melhores resultados.',
     },
     {
       question: 'Em quanto tempo vou ver resultados?',
