@@ -28,7 +28,7 @@ const FAQ = () => {
     },
     {
       question: 'Preciso ter site para fazer tráfego pago?',
-      answer: 'Sim, é fundamental ter um site otimizado ou landing page. Se não tiver, posso criar uma landing page de conversão por R$ 800-1.500. O site precisa ter formulários de contato e carregar rápido.',
+      answer: 'Sim. É fundamental ter um site ou landing page otimizada para conversão, responsiva e estruturada com técnicas de SEO. Caso ainda não tenha, na equipe temos um desenvolvedor profissional que cria landing page / site focada em conversão, totalmente alinhada à estratégia do negócio. A proposta é personalizada, de acordo com a estrutura do projeto.',
     },
     {
       question: 'Você faz a criação dos anúncios?',
@@ -36,7 +36,7 @@ const FAQ = () => {
     },
     {
       question: 'Posso cancelar quando quiser?',
-      answer: 'Sim, sem fidelidade. Aviso de 30 dias para cancelamento. Seus dados e campanhas ficam salvos caso queira retomar futuramente. Transparência total nos relatórios.',
+      answer: 'Sim. Os projetos são pensados para contratos de 12 meses, visando consistência e resultados. Caso a empresa opte pelo cancelamento, é necessário avisar com 30 dias de antecedência, conforme previsto em contrato, para evitar multas ou encargos de rescisão.',
     },
     {
       question: 'Como funciona o pagamento?',
